@@ -30,15 +30,20 @@ Route::get('/inscription', function () {
 });
 
 Route::post('/inscription', function () {
-    // $utilisateur = App\Models\Utilisateur::create([...])
-    $utilisateur = new App\Models\Utilisateur([
+    // valider le formulaire [Array de règles]
+    request()->validate([
+        'email' => ['required', 'email'],
+        'password' => ['required', 'confirmed', 'min:8'],
+        'password_confirmation' => ['required']
+    ]);
+
+    // $utilisateur = new App\Models\Utilisateur([...])
+    // Insert en base de données
+    $utilisateur = App\Models\Utilisateur::create([
             'email' => request('email'),
             'password' => bcrypt(request('password'))
         ]
     );
-
-    // Insert en base de données
-    $utilisateur->save();
 
     // Ajouter CSRF pour valider la demande
     return "Email : " . request('email') . "<br> Mot de passe : " . request('password');
