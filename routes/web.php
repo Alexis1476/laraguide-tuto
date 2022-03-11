@@ -14,13 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-   return view('welcome');
+    return view('welcome');
 });
 
 // Route avec un paramètre get
 Route::get('/test/{name}', function () {
 
-    return view('test',[
+    return view('test', [
         'name' => request('name')
     ]);
 });
@@ -30,14 +30,25 @@ Route::get('/inscription', function () {
 });
 
 Route::post('/inscription', function () {
-    $utilisateur = new App\Models\Utilisateur();
-    $utilisateur->email = request('email');
-    $utilisateur->password = bcrypt(request('password'));
+    // $utilisateur = App\Models\Utilisateur::create([...])
+    $utilisateur = new App\Models\Utilisateur([
+            'email' => request('email'),
+            'password' => bcrypt(request('password'))
+        ]
+    );
 
     // Insert en base de données
     $utilisateur->save();
 
     // Ajouter CSRF pour valider la demande
-    return "Email : ". request('email') . "<br> Mot de passe : " . request('password');
+    return "Email : " . request('email') . "<br> Mot de passe : " . request('password');
 });
 
+Route::get('/utilisateurs', function () {
+    // Récupère toutes les données d'une table
+    $utilisateurs = App\Models\Utilisateur::all();
+
+    return view('utilisateurs', [
+        'utilisateurs' => $utilisateurs
+    ]);
+});
