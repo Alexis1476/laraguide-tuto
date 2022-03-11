@@ -1,5 +1,8 @@
-@include('header')
-<body>
-<h1>Bonjour</h1>
-</body>
-@include('footer')
+@extends('layout')
+
+@section('content')
+    <div class="title m-b-md">
+        <h1>Bonjour</h1>
+    </div>
+@endsection
+

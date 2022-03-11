@@ -17,10 +17,27 @@ Route::get('/', function () {
    return view('welcome');
 });
 
-Route::get('/test/{prenom}', function () {
+// Route avec un paramètre get
+Route::get('/test/{name}', function () {
 
     return view('test',[
-        'prenom' => request('prenom')
+        'name' => request('name')
     ]);
+});
+
+Route::get('/inscription', function () {
+    return view('inscription');
+});
+
+Route::post('/inscription', function () {
+    $utilisateur = new App\Models\Utilisateur();
+    $utilisateur->email = request('email');
+    $utilisateur->password = bcrypt(request('password'));
+
+    // Insert en base de données
+    $utilisateur->save();
+
+    // Ajouter CSRF pour valider la demande
+    return "Email : ". request('email') . "<br> Mot de passe : " . request('password');
 });
 

@@ -1,1 +1,7 @@
-<h1>Page de test {{ $prenom }}</h1>
+@extends('layout')
+
+@section('content')
+    <div class="title m-b-md">
+        <h1>Bonjour {{ $name }}</h1>
+    </div>
+@endsection
