@@ -36,3 +36,6 @@ Route::post('/inscription', 'App\Http\Controllers\InscriptionController@traiteme
 use App\Http\Controllers\UtilisateursController;
 
 Route::get('/utilisateurs', [UtilisateursController::class, 'liste']);
+
+Route::get('/connexion', [\App\Http\Controllers\ConnexionController::class, 'formulaire']);
+Route::post('/connexion', [\App\Http\Controllers\ConnexionController::class, 'traitement']);
