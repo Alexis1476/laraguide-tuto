@@ -1,24 +1,45 @@
 @extends('layout')
 
 @section('content')
-    <form action="/inscription" method="post">
+    <form action="/inscription" method="post" class="section">
         {{--Dire que c'est bien nous qui avons effectué l'inscription--}}
         {{ csrf_field() }}
-        <p><input type="email" name="email" placeholder="Email" value="{{old('email')}}"></p>
+
+        <div class="field">
+            <label for="email" class="label">Email</label>
+            <div class="control">
+                <input class="input" id="email" type="email" name="email" placeholder="Email" value="{{old('email')}}">
+            </div>
+        </div>
         @if ($errors->has('email'))
-            <p>{{$errors->first('email')}}</p>
+            <p class="help is-danger">{{$errors->first('email')}}</p>
         @endif
 
-        <p><input type="password" name="password" placeholder="Password"></p>
+        <div class="field">
+            <label for="password" class="label">Password</label>
+            <div class="control">
+                <input class="input" id="password" type="password" name="password" placeholder="Password">
+            </div>
+        </div>
         @if ($errors->has('password'))
-            <p>{{$errors->first('password')}}</p>
+            <p class="help is-danger">{{$errors->first('password')}}</p>
         @endif
 
-        <p><input type="password" name="password_confirmation" placeholder="Password (Confirmation)"></p>
+        <div class="field">
+            <label for="password_confirmation" class="label">Password confirmation</label>
+            <div class="control">
+                <input class="input" id="password_confirmation" type="password" name="password_confirmation"
+                       placeholder="Password (Confirmation)">
+            </div>
+        </div>
         @if ($errors->has('password_confirmation'))
-            <p>{{$errors->first('password_confirmation')}}</p>
+            <p class="help is-danger">{{$errors->first('password_confirmation')}}</p>
         @endif
 
-        <input type="submit" value="S'inscrire">
+        <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-link">S'inscrire</button>
+            </div>
+        </div>
     </form>
 @endsection
