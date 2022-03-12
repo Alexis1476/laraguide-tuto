@@ -13,9 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+// Raccourci pour la page d'accueil
+Route::view('/', 'welcome');
 
 // Route avec un paramètre get
 Route::get('/test/{name}', function () {
@@ -25,37 +27,12 @@ Route::get('/test/{name}', function () {
     ]);
 });
 
-Route::get('/inscription', function () {
-    return view('inscription');
-});
+// 1 Syntaxe : NomController@Function
+Route::get('/inscription', 'App\Http\Controllers\InscriptionController@formulaire');
 
-Route::post('/inscription', function () {
-    // valider le formulaire [Array de règles]
-    request()->validate([
-        'email' => ['required', 'email'],
-        'password' => ['required', 'confirmed', 'min:8'],
-        'password_confirmation' => ['required']
-    ], [ // Array de messages d'erreur spécifiques
-        'password.min' => 'Pour de raisons de sécurité, votre mot de passe doit faire :min caractères'
-    ]);
+Route::post('/inscription', 'App\Http\Controllers\InscriptionController@traitement');
 
-    // $utilisateur = new App\Models\Utilisateur([...])
-    // Insert en base de données
-    $utilisateur = App\Models\Utilisateur::create([
-            'email' => request('email'),
-            'password' => bcrypt(request('password'))
-        ]
-    );
+// 2 Syntaxe :
+use App\Http\Controllers\UtilisateursController;
 
-    // Ajouter CSRF pour valider la demande
-    return "Email : " . request('email') . "<br> Mot de passe : " . request('password');
-});
-
-Route::get('/utilisateurs', function () {
-    // Récupère toutes les données d'une table
-    $utilisateurs = App\Models\Utilisateur::all();
-
-    return view('utilisateurs', [
-        'utilisateurs' => $utilisateurs
-    ]);
-});
+Route::get('/utilisateurs', [UtilisateursController::class, 'liste']);
