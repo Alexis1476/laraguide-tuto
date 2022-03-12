@@ -35,6 +35,8 @@ Route::post('/inscription', function () {
         'email' => ['required', 'email'],
         'password' => ['required', 'confirmed', 'min:8'],
         'password_confirmation' => ['required']
+    ], [ // Array de messages d'erreur spécifiques
+        'password.min' => 'Pour de raisons de sécurité, votre mot de passe doit faire :min caractères'
     ]);
 
     // $utilisateur = new App\Models\Utilisateur([...])
