@@ -44,3 +44,5 @@ Route::post('/connexion', [ConnexionController::class, 'traitement']);
 Route::get('/account', [\App\Http\Controllers\CompteController::class, 'accueil']);
 
 Route::get('/deconnexion', [\App\Http\Controllers\CompteController::class, 'deconnexion']);
+
+Route::post('/change-password', [\App\Http\Controllers\CompteController::class, 'changePassword']);
