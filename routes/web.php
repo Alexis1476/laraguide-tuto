@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConnexionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +30,6 @@ Route::get('/test/{name}', function () {
 
 // 1 Syntaxe : NomController@Function
 Route::get('/inscription', 'App\Http\Controllers\InscriptionController@formulaire');
-
 Route::post('/inscription', 'App\Http\Controllers\InscriptionController@traitement');
 
 // 2 Syntaxe :
@@ -37,7 +37,8 @@ use App\Http\Controllers\UtilisateursController;
 
 Route::get('/utilisateurs', [UtilisateursController::class, 'liste']);
 
-Route::get('/connexion', [\App\Http\Controllers\ConnexionController::class, 'formulaire']);
-Route::post('/connexion', [\App\Http\Controllers\ConnexionController::class, 'traitement']);
+Route::get('/connexion', [ConnexionController::class, 'formulaire']);
+Route::post('/connexion', [ConnexionController::class, 'traitement']);
 
-Route::view('/account', 'account');
+// Vérifier si un user est connecté
+Route::get('/account', [\App\Http\Controllers\CompteController::class, 'accueil']);
