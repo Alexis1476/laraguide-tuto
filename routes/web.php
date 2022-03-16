@@ -39,3 +39,5 @@ Route::get('/utilisateurs', [UtilisateursController::class, 'liste']);
 
 Route::get('/connexion', [\App\Http\Controllers\ConnexionController::class, 'formulaire']);
 Route::post('/connexion', [\App\Http\Controllers\ConnexionController::class, 'traitement']);
+
+Route::view('/account', 'account');

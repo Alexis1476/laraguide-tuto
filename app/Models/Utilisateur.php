@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-// Implémenter interface authentifiable
+// Implémenter interface authentifiable pour dire que la class est authentifiable
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 

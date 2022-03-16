@@ -14,6 +14,9 @@ class ConnexionController extends Controller
 
     public function traitement()
     {
+        // Laravel utilise par défaut class User.php, referencer dans auth.php!
+
+        // Valider les champs
         request()->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
@@ -21,12 +24,18 @@ class ConnexionController extends Controller
 
         // Authentification de laravel
         $resultat = auth()->attempt([
+            // 'clé' correspand à la colonne dans la table
             'email' => request('email'),
             'password' => request('password')  // Password mot clé pour laravel
         ]);
 
-        var_dump($resultat);
-        // Laravel utilise par défaut class User.php, referencer dans auth.php
-        return 'Traiter formulaire connexion';
+        // redirection
+        if ($resultat) {
+            return redirect('/account');
+        }
+        // Retourne page précedente avec les données écris dans le formulaire + erreurs
+        return back()->withInput()->withErrors([
+            'email' => 'Vos idéntifiants sont incorrects'
+        ]);
     }
 }
