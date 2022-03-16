@@ -12,6 +12,10 @@ class Utilisateur extends Model implements Authenticatable
     use \Illuminate\Auth\Authenticatable;
 
     // ! Redefinir les functions si besoin en fonction des attributs
+    public function getRememberTokenName()
+    {
+        return '';
+    }
 
     // Tableau avec les colonnes remplissables automatiquement
     protected $fillable = ['email', 'password'];

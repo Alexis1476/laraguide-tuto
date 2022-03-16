@@ -42,3 +42,5 @@ Route::post('/connexion', [ConnexionController::class, 'traitement']);
 
 // Vérifier si un user est connecté
 Route::get('/account', [\App\Http\Controllers\CompteController::class, 'accueil']);
+
+Route::get('/deconnexion', [\App\Http\Controllers\CompteController::class, 'deconnexion']);
