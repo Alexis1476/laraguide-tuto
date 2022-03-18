@@ -9,12 +9,6 @@ class CompteController extends Controller
 {
     public function changePassword()
     {
-        if (auth()->guest()) {
-            return redirect('/connexion')->withErrors([
-                'email' => 'Vous devez vous connecter pour voir cette page'
-            ]);
-        }
-
         request()->validate([
             'password' => ['required', 'confirmed', 'min:8'],
             'password_confirmation' => ['required']
@@ -35,13 +29,6 @@ class CompteController extends Controller
     //
     function accueil()
     {
-        // auth()->check(); -> Dit si un utilisateur est connecté
-        // auth()->guest() -> Si l'utilsiateur est un invité
-        if (auth()->guest()) {
-            return redirect('/connexion')->withErrors([
-                'email' => 'Vous devez vous connecter pour voir cette page'
-            ]);
-        }
         return View('account');
     }
 
