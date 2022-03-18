@@ -45,6 +45,8 @@ Route::get('/account', [\App\Http\Controllers\CompteController::class, 'accueil'
 Route::get('/deconnexion', [\App\Http\Controllers\CompteController::class, 'deconnexion']);
 Route::post('/change-password', [\App\Http\Controllers\CompteController::class, 'changePassword']);
 
+Route::post('/messages', [\App\Http\Controllers\MessagesController::class, 'nouveau']);
+
 /* ! Vu qu'on crée una variable get, ça va prendre le pas de chaque route,
  donc il faut la mettre après les routes ou modifier la route */
 Route::get('/{email}', [UtilisateursController::class, 'voir']);
