@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 // Raccourci pour la page d'accueil
-Route::view('/', 'welcome');
+/*Route::view('/', 'welcome');*/
 
 // Route avec un paramètre get
 Route::get('/test/{name}', function () {
@@ -35,7 +35,7 @@ Route::post('/inscription', 'App\Http\Controllers\InscriptionController@traiteme
 // 2 Syntaxe :
 use App\Http\Controllers\UtilisateursController;
 
-Route::get('/utilisateurs', [UtilisateursController::class, 'liste']);
+Route::get('/', [UtilisateursController::class, 'liste']);
 
 Route::get('/connexion', [ConnexionController::class, 'formulaire']);
 Route::post('/connexion', [ConnexionController::class, 'traitement']);
