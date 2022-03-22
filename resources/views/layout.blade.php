@@ -25,7 +25,6 @@
                 @include('partials.navbar-item', ['lien' => 'connexion', 'texte' => 'Se connecter'])
                 @include('partials.navbar-item', ['lien' => 'inscription', 'texte' => 'S\'inscrire'])
             @endif
-            <a></a>
         </div>
     </div>
 </nav>
