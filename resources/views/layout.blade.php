@@ -11,15 +11,15 @@
 <nav class="navbar is-light">
     <div class="navbar-menu">
         <div class="navbar-start">
-            <a href="/" class="navbar-item">Accueil</a>
+            <a href="/" class="navbar-item {{ request()->is('/') ? 'is-active' : "" }}">Accueil</a>
         </div>
         <div class="navbar-end">
             @if(auth()->check())
-                <a href="/account" class="navbar-item">Mon compte</a>
+                <a href="/account" class="navbar-item {{ request()->is('account') ? 'is-active' : '' }}">Mon compte</a>
                 <a href="/deconnexion" class="navbar-item">Se déconnecter</a>
             @else
-                <a href="/connexion" class="navbar-item">Se connecter</a>
-                <a href="/inscription" class="navbar-item">S'inscrire</a>
+                <a href="/connexion" class="navbar-item {{ request()->is('connexion') ? 'is-active' : '' }}">Se connecter</a>
+                <a href="/inscription" class="navbar-item {{ request()->is('inscription') ? 'is-active' : '' }}">S'inscrire</a>
             @endif
             <a></a>
         </div>
