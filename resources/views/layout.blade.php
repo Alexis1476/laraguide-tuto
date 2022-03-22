@@ -8,14 +8,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar">
+<nav class="navbar is-light">
     <div class="navbar-menu">
         <div class="navbar-start">
             <a href="/" class="navbar-item">Accueil</a>
         </div>
         <div class="navbar-end">
-            <a href="/connexion" class="navbar-item">Se connecter</a>
-            <a href="/inscription" class="navbar-item">S'inscrire</a>
+            @if(auth()->check())
+                <a href="/account" class="navbar-item">Mon compte</a>
+                <a href="/deconnexion" class="navbar-item">Se déconnecter</a>
+            @else
+                <a href="/connexion" class="navbar-item">Se connecter</a>
+                <a href="/inscription" class="navbar-item">S'inscrire</a>
+            @endif
             <a></a>
         </div>
     </div>
