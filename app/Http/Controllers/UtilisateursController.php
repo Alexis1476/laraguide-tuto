@@ -14,9 +14,10 @@ class UtilisateursController extends Controller
     {
         $email = request('email');
         $user = Utilisateur::where('email', $email)->firstOrFail();
-        $messages = Message::where('idUtilisateur', $user->id)->latest()->get(); // Get retourne tous les résultats
+        //$messages = Message::where('idUtilisateur', $user->id)->latest()->get(); // Get retourne tous les résultats
+        //$messages = $user->messages; // Laravel check si méthode messages existe
 
-        return View('utilisateur', ['utilisateur' => $user, 'messages' => $messages]);
+        return View('utilisateur', ['utilisateur' => $user]);
     }
 
     //
