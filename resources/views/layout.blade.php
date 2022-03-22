@@ -11,15 +11,19 @@
 <nav class="navbar is-light">
     <div class="navbar-menu">
         <div class="navbar-start">
-            <a href="/" class="navbar-item {{ request()->is('/') ? 'is-active' : "" }}">Accueil</a>
+            {{-- Laravel utilise des points pour séparer les dossiers des fichiers --}}
+            @include('partials.navbar-item', ['lien' => '/', 'texte' => 'Accueil'])
+            @auth() {{--Remplace le if(auth()->check()gi)--}}
+                @include('partials.navbar-item', ['lien' => auth()->user()->email, 'texte' => auth()->user()->email])
+            @endauth
         </div>
         <div class="navbar-end">
             @if(auth()->check())
-                <a href="/account" class="navbar-item {{ request()->is('account') ? 'is-active' : '' }}">Mon compte</a>
-                <a href="/deconnexion" class="navbar-item">Se déconnecter</a>
+                @include('partials.navbar-item', ['lien' => 'account', 'texte' => 'Mon compte'])
+                @include('partials.navbar-item', ['lien' => 'deconnexion', 'texte' => 'Se déconnecter'])
             @else
-                <a href="/connexion" class="navbar-item {{ request()->is('connexion') ? 'is-active' : '' }}">Se connecter</a>
-                <a href="/inscription" class="navbar-item {{ request()->is('inscription') ? 'is-active' : '' }}">S'inscrire</a>
+                @include('partials.navbar-item', ['lien' => 'connexion', 'texte' => 'Se connecter'])
+                @include('partials.navbar-item', ['lien' => 'inscription', 'texte' => 'S\'inscrire'])
             @endif
             <a></a>
         </div>
