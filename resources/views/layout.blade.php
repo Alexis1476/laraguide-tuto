@@ -8,6 +8,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+<nav class="navbar">
+    <div class="navbar-menu">
+        <div class="navbar-start">
+            <a href="/" class="navbar-item">Accueil</a>
+        </div>
+        <div class="navbar-end">
+            <a href="/connexion" class="navbar-item">Se connecter</a>
+            <a href="/inscription" class="navbar-item">S'inscrire</a>
+            <a></a>
+        </div>
+    </div>
+</nav>
 <div class="container">
     @yield('content')
 </div>
