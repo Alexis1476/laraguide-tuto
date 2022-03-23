@@ -23,7 +23,7 @@ class SuivisController extends Controller
         $currentUser = auth()->user();
         $userASuivre = Utilisateur::where('email', request('email'))->firstOrFail();
 
-        // Attacher
+        // Attach
         $currentUser->suivis()->attach($userASuivre);
         return back();
     }
