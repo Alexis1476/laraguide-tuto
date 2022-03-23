@@ -2,7 +2,19 @@
 
 @section('content')
     <div class="section">
-        <h1 class="title is-1">{{$utilisateur->email}}</h1>
+        <h1 class="title is-1">
+            <div class="level-left">
+                <div class="level-item">
+                    {{$utilisateur->email}}
+                </div>
+                @auth
+                    <form class="level-item" method="post" action="/{{$utilisateur->email}}/suivis">
+                        {{csrf_field()}}
+                        <button class="button" type="submit">Suivre</button>
+                    </form>
+                @endauth
+            </div>
+        </h1>
         @if(auth()->check() AND auth()->user()->id === $utilisateur->id)
             <form action="/messages" method="post">
                 {{csrf_field()}}
@@ -25,7 +37,7 @@
             </form>
         @endif
         @foreach($utilisateur->messages as $message)
-        <hr>
+            <hr>
             <p>
                 <strong>{{$message->created_at}}</strong>
                 {{$message->contenu}}

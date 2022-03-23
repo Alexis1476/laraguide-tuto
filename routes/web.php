@@ -48,6 +48,7 @@ Route::group([
     Route::post('/change-password', [\App\Http\Controllers\CompteController::class, 'changePassword']);
 
     Route::post('/messages', [\App\Http\Controllers\MessagesController::class, 'nouveau']);
+    Route::post('{email}/suivis', [\App\Http\Controllers\SuivisController::class, 'nouveau']);
 });
 Route::get('/connexion', [ConnexionController::class, 'formulaire']);
 Route::post('/connexion', [ConnexionController::class, 'traitement']);
