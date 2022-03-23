@@ -10,7 +10,17 @@
                 @auth
                     <form class="level-item" method="post" action="/{{$utilisateur->email}}/suivis">
                         {{csrf_field()}}
-                        <button class="button" type="submit">Suivre</button>
+                        {{---Modifie le type de méthode--}}
+                        @if(auth()->user()->suit($utilisateur))
+                            {{method_field('delete')}}
+                        @endif
+                        <button class="button" type="submit">
+                            @if(auth()->user()->suit($utilisateur))
+                                Ne plus suivre
+                            @else
+                                Suivre
+                            @endif
+                        </button>
                     </form>
                 @endauth
             </div>

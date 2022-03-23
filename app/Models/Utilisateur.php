@@ -11,6 +11,12 @@ class Utilisateur extends Model implements Authenticatable
     // Implementer les méthodes de l'interface par défaut
     use \Illuminate\Auth\Authenticatable;
 
+    public function suit($utilisateur)
+    {
+        // Exists retourne vrai ou faux
+        return $this->suivis()->where('suivi_id', $utilisateur->id)->exists();
+    }
+
     public function suivis()
     {
         // Rélation many to many 2 param = nom de rélation 3 param = Nom colonnes
