@@ -7,11 +7,9 @@
                 <h2 class="title is-2">Utilisateurs suivis</h2>
                 @forelse(auth()->user()->suivis as $utilisateur)
                     <ul>
-                        @foreach(auth()->user()->suivis as $utilisateur)
-                            <li>
-                                <a href="/{{$utilisateur->email}}">{{$utilisateur->email}}</a>
-                            </li>
-                        @endforeach
+                        <li>
+                            <a href="/{{$utilisateur->email}}">{{$utilisateur->email}}</a>
+                        </li>
                     </ul>
                 @empty
                     Vous ne suivez aucun utilisateur
