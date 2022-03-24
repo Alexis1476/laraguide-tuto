@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/robi', function () {
     return view('welcome');
 });
 // Raccourci pour la page d'accueil
@@ -43,6 +43,7 @@ Route::group([
 ], function () {
     // Vérifier si un user est connecté
     Route::get('/account', [\App\Http\Controllers\CompteController::class, 'accueil']);
+    Route::get('/news', [\App\Http\Controllers\NewsController::class, 'liste']);
     Route::get('/deconnexion', [\App\Http\Controllers\CompteController::class, 'deconnexion']);
 
     Route::post('/change-password', [\App\Http\Controllers\CompteController::class, 'changePassword']);

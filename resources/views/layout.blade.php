@@ -13,8 +13,9 @@
         <div class="navbar-start">
             {{-- Laravel utilise des points pour séparer les dossiers des fichiers --}}
             @include('partials.navbar-item', ['lien' => '/', 'texte' => 'Accueil'])
-            @auth() {{--Remplace le if(auth()->check()gi)--}}
+            @auth {{--Remplace le if(auth()->check()gi)--}}
                 @include('partials.navbar-item', ['lien' => auth()->user()->email, 'texte' => auth()->user()->email])
+                @include('partials.navbar-item', ['lien' => 'news', 'texte' => 'Actualités'])
             @endauth
         </div>
         <div class="navbar-end">
