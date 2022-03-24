@@ -13,11 +13,18 @@ class NewsController extends Controller
         // dd() > Dump and die
         // Map() > Crée une nouvelle collection de données
         // Flatten() > Met une collection multi dans un array d'une seule dimension
-        $messages = auth()->user()
+
+        /*$messages = auth()->user()
             ->suivis
             ->map(function ($user) {
                 return $user->messages;
-            })->flatten();
+            })->flatten()
+            ->sortByDesc(function ($message) {
+                return $message->created_at;
+            });*/
+        $messages = auth()->user()
+            ->suivis->flatMap->messages // Appel function map -> retourne messages orderProxy
+            ->sortByDesc->created_at; // Methode sortBy created_at
 
         return View('news', [
             'messages' => $messages
