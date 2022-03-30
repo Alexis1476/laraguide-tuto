@@ -22,9 +22,15 @@ class NewsController extends Controller
             ->sortByDesc(function ($message) {
                 return $message->created_at;
             });*/
+
+        //$usersSuivis->load('messages'); // Une seule requête SQL pour charger les messages
+
+        /* $messages = auth()->user()
+             ->suivis->flatMap->messages // Appel function map -> retourne messages orderProxy
+             ->sortByDesc->created_at;*/ // Methode sortBy created_at
         $messages = auth()->user()
-            ->suivis->flatMap->messages // Appel function map -> retourne messages orderProxy
-            ->sortByDesc->created_at; // Methode sortBy created_at
+            ->suivis->load('messages')->flatMap
+            ->messages->sortByDesc->create_at;
 
         return View('news', [
             'messages' => $messages
