@@ -33,4 +33,21 @@
             </div>
         </div>
     </form>
+    <form class="section" action="/change-avatar" method="post" enctype="multipart/form-data">
+        {{csrf_field()}}
+        <div class="field">
+            <label for="avatar" class="label">New avatar</label>
+            <div class="control">
+                <input class="input" id="avatar" type="file" name="avatar" placeholder="Avatar">
+            </div>
+            @if ($errors->has('avatar'))
+                <p class="help is-danger">{{$errors->first('avatar')}}</p>
+            @endif
+        </div>
+        <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-link">Modifier avatar</button>
+            </div>
+        </div>
+    </form>
 @endsection

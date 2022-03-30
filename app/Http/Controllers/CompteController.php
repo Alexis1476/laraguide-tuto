@@ -7,6 +7,16 @@ use Illuminate\View\View;
 
 class CompteController extends Controller
 {
+    public function changeAvatar()
+    {
+        request()->validate([
+            'avatar' => ['required','image']
+        ]);
+
+        $path = request('avatar')->store('avatars');
+        return $path;
+    }
+
     public function changePassword()
     {
         request()->validate([

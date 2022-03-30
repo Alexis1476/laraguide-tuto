@@ -51,6 +51,7 @@ Route::group([
     Route::post('/messages', [\App\Http\Controllers\MessagesController::class, 'nouveau']);
     Route::post('{email}/suivis', [\App\Http\Controllers\SuivisController::class, 'nouveau']);
     Route::delete('{email}/suivis', [\App\Http\Controllers\SuivisController::class, 'enlever']);
+    Route::post('/change-avatar',[\App\Http\Controllers\CompteController::class, 'changeAvatar']);
 });
 Route::get('/connexion', [ConnexionController::class, 'formulaire']);
 Route::post('/connexion', [ConnexionController::class, 'traitement']);
