@@ -2,7 +2,16 @@
 
 @section('content')
     <div class="section">
-        <h1 class="title is-1">Account</h1>
+        <div class="media">
+            <div class="media-left">
+                <figure class="image is-48x48">
+                    <img src="/storage/{{auth()->user()->avatar}}" alt="Avatar">
+                </figure>
+            </div>
+            <div class="media-content">
+                <h1 class="title is-1">Account</h1>
+            </div>
+        </div>
     </div>
     <form class="section" action="/change-password" method="post">
         {{csrf_field()}}

@@ -13,7 +13,9 @@ class CompteController extends Controller
             'avatar' => ['required','image']
         ]);
 
-        $path = request('avatar')->store('avatars'); // Stock image dans dossier avatar
+        // php artisan storage:link -> Accessible au public
+        // Stock image dans dossier public/avatar
+        $path = request('avatar')->store('avatars', 'public');
 
         auth()->user()->update([
             'avatar' => $path

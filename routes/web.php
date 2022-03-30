@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/robi', function () {
-    return view('welcome');
+Route::get('/', function () {
+    return 'message';
 });
 // Raccourci pour la page d'accueil
 /*Route::view('/', 'welcome');*/
