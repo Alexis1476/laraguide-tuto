@@ -37,6 +37,6 @@ class Utilisateur extends Model implements Authenticatable
     }
 
     // Tableau avec les colonnes remplissables automatiquement
-    protected $fillable = ['email', 'password'];
+    protected $fillable = ['email', 'password', 'avatar'];
 
 }

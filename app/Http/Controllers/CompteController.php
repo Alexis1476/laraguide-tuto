@@ -14,6 +14,11 @@ class CompteController extends Controller
         ]);
 
         $path = request('avatar')->store('avatars'); // Stock image dans dossier avatar
+
+        auth()->user()->update([
+            'avatar' => $path
+        ]);
+
         return $path;
     }
 
